@@ -60,7 +60,7 @@ io.on('connection',(socket) => {
         const filter = new Filter()
         filter.addWords('bal', 'Bal');
         if(filter.isProfane(message)){
-            return callback('Bad words :(')
+            return callback('I love you !! :)')
         }
             io.to(user.group).emit('message', generateMessage(user.username, message))
             callback()

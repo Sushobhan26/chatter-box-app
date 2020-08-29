@@ -119,9 +119,9 @@ $messageForm.addEventListener('submit', (e) => {
         $messageFormInput.value = ''
         $messageFormInput.focus()
         if(error){
-        return console.log(error)
+        return alert(error)
         }
-        console.log('Message Delivered')
+        
     })
 })
 
@@ -144,7 +144,7 @@ $shareLocationButton.addEventListener('click', ()=> {
         }, (message)=> {
             //enabling button
              $shareLocationButton.removeAttribute('disabled')
-            console.log(message)
+            //console.log(message)
         })
     })
 })
