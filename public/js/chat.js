@@ -17,13 +17,16 @@ const $messageTemplate = document.querySelector('#message-template').innerHTML
 const $locationTemplate = document.querySelector('#location-template').innerHTML
 const $groupdataTemplate = document.querySelector('#groupdata-template').innerHTML
 
+//Using qs(query string) lib to parse username and group
+const { username, group } = Qs.parse(location.search, {ignoreQueryPrefix: true})
+
+
 // When the user clicks on the button, scroll to the latest message
 function godown ()
 { $messages.lastElementChild.scrollIntoView();
 }
 
-//Using qs(query string) lib to parse username and group
-const { username, group } = Qs.parse(location.search, {ignoreQueryPrefix: true})
+
 
 const autoscroll = () => {
     //new message
@@ -51,7 +54,7 @@ const autoscroll = () => {
 
 
 socket.on('message', (msg) => {
-    console.log(msg)
+    //console.log(msg)
     //render mustache lib to render the html template for instant messaging
     //2nd parameter in the render is the dynamic key (KEY:VALUE pair) mentioned in the template
     //calling moment lib to manipulate the time
@@ -78,7 +81,7 @@ socket.on('message', (msg) => {
 })
 
 socket.on('locationMessage', (location) => {
-    console.log(location)
+    //console.log(location)
     const html = Mustache.render($locationTemplate, {
         username: location.username,
         location: location.location,

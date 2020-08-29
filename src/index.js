@@ -31,14 +31,14 @@ io.on('connection',(socket) => {
 
     //join group event
     socket.on('join', ({ username, group }, callback) => {
-
+        
         //socket.id is a unique identifier for every connection
         const { error, user } = addUser({ id: socket.id, username, group })
 
         if(error){
             return callback(error)
         }
-
+        
         //socket.join allows to join the particular chatroom provided
         socket.join(user.group)
 
@@ -62,6 +62,7 @@ io.on('connection',(socket) => {
         if(filter.isProfane(message)){
             return callback('I love you !! :)')
         }
+
             io.to(user.group).emit('message', generateMessage(user.username, message))
             callback()
         })
